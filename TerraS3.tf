@@ -1,15 +1,8 @@
-# To create  S3 bucket 
-
-provider "aws" {
-  region                  = "us-east-2"
-  profile                 = "default"
-}
-
-
+# To create  S3 bucket
 resource "aws_s3_bucket" "testb01" {
-  bucket = "First-test-bucket-01"
+  bucket = "first-test-bucket-01"
   acl    = "public-read"
-  
+
   versioning {
     enabled = true
   }
@@ -21,7 +14,8 @@ resource "aws_s3_bucket" "testb01" {
 }
 
 
-output "S3 Bucket id:" {
+output "SBucketid" {
      value = "${aws_s3_bucket.testb01.id}"
 }
+
   
