@@ -21,18 +21,30 @@ try:
                "(item_no, item_name, description, active, createdate) "
                "VALUES (%s, %s, %s, %s, %s)")
 
- data_prod = ('K5431', 'Shirt', 'Longsleevesweater','1',today)
+ data_prod = ('K5434', 'Shirt', 'S size sleeves sweater','1',today)
 
 # Insert new product
 
  print ( "After cursor")
 # Now execute the sqlquery
  cursor.execute(add_prod, data_prod)
- item_no = cursor.lastrowid
-
-# Make sure data is committed to the database
  cnx.commit()
 
+ item_no = cursor.lastrowid
+ print (item_no)
+
+ #update 
+ #upd_sql = "UPDATE products SET description  = 'M size sweater' WHERE item_no = '%(item_no)s'"
+ upd_sql = "UPDATE products SET description = %s WHERE item_no = %s"
+ val = ("L size sweater", "K5434")
+ 
+ cursor.execute(upd_sql,val)
+
+ cnx.commit()
+
+ print(cursor.rowcount, "record(s) affected")
+# Make sure data is committed to the database
+ cnx.commit()
 
 except mysql.Error as e:
     print("There is a problem with mysql", e)
