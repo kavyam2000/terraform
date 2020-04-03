@@ -1,0 +1,4 @@
+database name :TestDB
+password kavyam
+username kavyamark
+region us-east-2
